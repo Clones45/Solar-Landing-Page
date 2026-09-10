@@ -1,0 +1,1035 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SolarWave Tech Enterprises</title>
+<meta name="description" content="Hybrid solar systems with battery backup for Philippine homes and businesses. Answer 7 quick questions to see if your property qualifies for a free on-site assessment.">
+<meta property="og:title" content="SolarWave Tech Enterprises – Free Solar Assessment">
+<meta property="og:description" content="Cut your electric bill and keep the lights on during brownouts. See if your property qualifies in about a minute.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/hero-roof.jpg">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/logo-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+
+<script>
+/* ============================================================
+   EDIT THESE SETTINGS  (see README.md for details)
+   ============================================================ */
+window.SOLARWAVE_CONFIG = {
+  endpoint: "https://script.google.com/macros/s/AKfycbwsVdykhrA0Jyv_v1wl_GMBoRNk6x8i_t5-aWmbLl26fJESQNz6cu1ykn5VagMX_9w8/exec", // Google Apps Script web app. Empty = test mode: leads print to the browser console.
+  endpointFormat: "text",          // "json" | "form" | "text"  (use "text" for Google Apps Script)
+  fbPixelId: "",                   // Meta Pixel ID, e.g. "123456789012345". Empty = pixel disabled.
+  phone: "+639055558267",          // used for tap-to-call links
+  phoneDisplay: "0905 555 8267",   // how the number is shown on the page
+  messenger: "https://m.me/61572042633029",   // opens Messenger for facebook.com/profile.php?id=61572042633029
+  email: "",                       // optional, shown in the footer when set
+  address: "",                     // optional, shown in the footer when set
+  thankYouRedirect: ""             // optional: full URL of a separate thank-you page
+};
+</script>
+
+<style>
+:root{
+  --navy:#0B2545; --navy-2:#102F5C; --navy-deep:#071A33;
+  --ocean:#1160B4; --ocean-soft:#E4EEF9; --ocean-ink:#0C4A8C;
+  --sun:#F2870F; --sun-deep:#D5690A; --sun-glow:#FFB157; --sun-soft:#FFF1E3;
+  --paper:#F3F6FA; --white:#FFFFFF; --ink:#10233D; --ink-2:#4B5B73; --line:#D6DEE9;
+  --leaf:#1F8A4C; --leaf-soft:#E3F5EA; --warn:#9A4B00; --warn-soft:#FFF3E4; --danger:#B42318;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Figtree','Segoe UI',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);font-size:1.0625rem;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.012em}
+p{margin:0}
+a{color:var(--ocean)}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+.icon{width:1.25em;height:1.25em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+
+/* ---------- top bar ---------- */
+.topbar{position:absolute;inset:0 0 auto 0;z-index:5;padding:1rem 0}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;color:#fff;text-decoration:none}
+.brand img{width:46px;height:46px;border-radius:50%;background:#fff}
+.brand__name{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1;letter-spacing:-.01em}
+.brand__name b{color:var(--sun-glow);font-weight:800}
+.brand__sub{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-top:.25rem}
+.topbar .topbar__msg{display:none}
+.topbar__call{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+@media (min-width:720px){
+  .topbar__call{display:none}
+  .topbar .topbar__msg{display:inline-flex}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--navy);color:#fff;padding:6.6rem 0 6.5rem}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;
+  background:radial-gradient(70% 60% at 0% 0%,rgba(242,135,15,.45),transparent 62%),
+             radial-gradient(55% 55% at 100% 100%,rgba(17,96,180,.6),transparent 62%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.07;
+  background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 85%);mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 85%)}
+.hero__grid{display:grid;gap:2.25rem;align-items:start}
+@media (min-width:900px){
+  .hero{padding:8rem 0 7.5rem}
+  .hero__grid{grid-template-columns:1.08fr .92fr;gap:4rem;align-items:center}
+}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#FFC98A}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--sun);border-radius:2px}
+.hero h1{font-size:clamp(2.2rem,3.6vw + 1.1rem,3.6rem);font-weight:800;margin-top:1rem;max-width:17ch}
+.hero h1 em{font-style:normal;color:var(--sun-glow)}
+.hero__lead{font-size:1.125rem;color:rgba(255,255,255,.84);max-width:50ch;margin-top:1.25rem}
+.proof{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.7rem}
+.proof li{display:flex;align-items:center;gap:.7rem;font-weight:500;color:rgba(255,255,255,.92)}
+.proof .icon{color:var(--sun-glow);width:1.35em;height:1.35em}
+.hero__cta{margin-top:1.6rem}
+@media (min-width:900px){.hero__cta{display:none}}
+.wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:64px;display:block;z-index:0}
+@media (min-width:900px){.wave{height:90px}}
+
+/* ---------- qualifier card ---------- */
+.qualifier{position:relative;z-index:1;background:#fff;color:var(--ink);border-radius:22px;padding:1.5rem;
+  box-shadow:0 32px 64px -24px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+@media (min-width:600px){.qualifier{padding:2rem}}
+.q-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.q-kicker{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ocean)}
+.q-count{font-size:.82rem;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.q-bar{height:6px;background:var(--ocean-soft);border-radius:999px;margin-top:.8rem;overflow:hidden}
+.q-bar i{display:block;height:100%;width:12.5%;background:var(--sun);border-radius:inherit;transition:width .3s ease}
+.q-title{font-family:var(--display);font-size:1.4rem;font-weight:700;line-height:1.2;margin-top:1.2rem;text-wrap:balance}
+.q-help{color:var(--ink-2);font-size:.95rem;margin-top:.4rem}
+.step[hidden]{display:none}
+.opts{display:grid;gap:.6rem;margin-top:1.1rem}
+.opt{position:relative;display:block;margin:0;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.opt__body{display:flex;align-items:center;gap:.8rem;min-height:54px;padding:.75rem 1rem;border:1.5px solid var(--line);border-radius:12px;font-weight:500;background:#fff;
+  transition:border-color .15s,background .15s}
+.opt__body::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);background:#fff;transition:border-color .15s,background .15s}
+.opt:hover .opt__body{border-color:var(--ocean)}
+.opt input:checked + .opt__body{border-color:var(--ocean);background:var(--ocean-soft)}
+.opt input:checked + .opt__body::before{border-color:var(--ocean);background:radial-gradient(circle,var(--ocean) 0 5px,#fff 5.5px)}
+.opt input:focus-visible + .opt__body{outline:3px solid var(--sun);outline-offset:2px}
+.field{display:grid;gap:.35rem;margin-top:.9rem}
+.field label{font-size:.9rem;font-weight:600}
+.field label small{font-weight:400;color:var(--ink-2)}
+.field input,.field select{font:inherit;width:100%;min-height:52px;padding:.75rem .95rem;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.field select{appearance:none;-webkit-appearance:none;padding-right:2.6rem;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5B73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .9rem center;background-size:1.1rem}
+.field input:focus,.field select:focus{outline:3px solid rgba(17,96,180,.3);border-color:var(--ocean)}
+.field .err{display:none;color:var(--danger);font-size:.85rem}
+.field.is-invalid input,.field.is-invalid select{border-color:var(--danger)}
+.field.is-invalid .err{display:block}
+.consent{display:flex;gap:.7rem;align-items:flex-start;margin-top:1.1rem;font-size:.9rem;color:var(--ink-2);cursor:pointer}
+.consent input{flex:none;width:20px;height:20px;margin:.15rem 0 0;accent-color:var(--ocean)}
+.consent.is-invalid{color:var(--danger)}
+.notice{display:flex;gap:.6rem;align-items:flex-start;padding:.8rem 1rem;border-radius:12px;background:var(--warn-soft);color:var(--warn);font-size:.92rem;margin-top:1rem}
+.notice .icon{margin-top:.15rem}
+.notice[hidden]{display:none}
+.q-nav{display:flex;justify-content:space-between;align-items:center;gap:.75rem;margin-top:1.25rem}
+.q-nav .btn--ghost{visibility:hidden}
+.q-nav.has-back .btn--ghost{visibility:visible}
+.q-nav .btn--primary[hidden]{display:none}
+.q-nav[hidden]{display:none}
+.q-fine{font-size:.82rem;color:var(--ink-2);text-align:center;margin-top:.9rem}
+.q-error{display:none;margin-top:.9rem;padding:.8rem 1rem;border-radius:12px;background:#FDECEA;color:var(--danger);font-size:.92rem}
+.q-error.is-on{display:block}
+.hp{position:absolute;left:-9999px;top:-9999px;opacity:0}
+
+/* thank-you state */
+.q-done[hidden]{display:none}
+.q-done__check{width:64px;height:64px;border-radius:50%;background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center}
+.q-done__check .icon{width:32px;height:32px;stroke-width:2.5}
+.q-done h3{font-size:1.6rem;font-weight:800;margin-top:1rem}
+.q-done > p{color:var(--ink-2);margin-top:.5rem}
+.summary{margin:1.25rem 0 0;border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.summary div{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 1rem;font-size:.95rem;border-top:1px solid var(--line)}
+.summary div:first-child{border-top:0}
+.summary dt{color:var(--ink-2)}
+.summary dd{margin:0;font-weight:600;text-align:right}
+.summary p{padding:.6rem 1rem;font-size:.82rem;color:var(--ink-2);background:var(--paper)}
+.next{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:.6rem;counter-reset:n}
+.next li{display:flex;gap:.8rem;align-items:flex-start;font-size:.95rem}
+.next li::before{counter-increment:n;content:counter(n);flex:none;width:26px;height:26px;border-radius:50%;background:var(--ocean);color:#fff;font-weight:700;font-size:.8rem;display:grid;place-items:center;margin-top:.1rem}
+.upload{margin-top:1.25rem;padding:1rem 1.1rem;border:1.5px dashed var(--ocean);border-radius:14px;background:var(--ocean-soft)}
+.upload h4{font-family:var(--display);font-size:1.05rem;font-weight:700;margin:0;line-height:1.25}
+.upload__hint{font-size:.9rem;color:var(--ink-2);margin-top:.35rem}
+.upload__row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-top:.85rem}
+.upload__row .btn{min-height:48px;font-size:.95rem}
+.upload__row .btn[hidden]{display:none}
+.upload input[type=file]{display:none}
+.upload__preview{width:56px;height:56px;border-radius:10px;object-fit:cover;background:#fff;border:1px solid var(--line);display:none}
+.upload__preview.is-on{display:block}
+.upload__status{display:none;font-size:.9rem;font-weight:600;margin-top:.6rem}
+.upload__status.is-on{display:block}
+.upload__status.is-ok{color:var(--leaf)}
+.upload__status.is-err{color:var(--danger);font-weight:500}
+.q-done__actions{display:grid;gap:.6rem;margin-top:1.25rem}
+.q-done__actions .btn{white-space:nowrap;padding-inline:1rem}
+@media (min-width:480px){.q-done__actions{grid-template-columns:1fr 1fr}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;padding:.8rem 1.5rem;border-radius:12px;border:0;font:inherit;font-weight:700;font-size:1.02rem;cursor:pointer;text-decoration:none;line-height:1.2;
+  transition:background .15s,color .15s,transform .1s}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.btn--primary{background:var(--sun);color:#fff}
+.btn--primary:hover{background:var(--sun-deep)}
+.btn--primary[disabled]{opacity:.7;cursor:progress}
+.btn--ghost{background:transparent;color:var(--ink-2);padding-inline:.9rem}
+.btn--ghost:hover{color:var(--ink);background:var(--paper)}
+.btn--outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+.btn--outline:hover{background:rgba(255,255,255,.1)}
+.btn--ocean{background:var(--ocean);color:#fff}
+.btn--ocean:hover{background:var(--ocean-ink)}
+.btn--soft{background:var(--ocean-soft);color:var(--ocean-ink)}
+.btn--soft:hover{background:#d3e3f6}
+.btn--block{width:100%}
+
+/* ---------- sections ---------- */
+.section{padding:4.25rem 0}
+@media (min-width:900px){.section{padding:6rem 0}}
+.section--white{background:#fff}
+.section__head{max-width:62ch}
+.section__head .eyebrow{color:var(--ocean)}
+.section__head .eyebrow::before{background:var(--ocean)}
+.section h2{font-size:clamp(1.75rem,2.1vw + .95rem,2.5rem);font-weight:800;margin-top:.8rem}
+.section__lead{color:var(--ink-2);margin-top:.9rem;font-size:1.08rem;max-width:58ch}
+
+/* photo band under hero */
+.band{position:relative;z-index:2;margin-top:-2.75rem;padding-bottom:.5rem}
+@media (min-width:900px){.band{margin-top:-4rem}}
+.band__row{display:grid;grid-auto-flow:column;grid-auto-columns:76%;gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 0 .75rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.band__row::-webkit-scrollbar{display:none}
+@media (min-width:720px){.band__row{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;gap:1.25rem}}
+.photo{position:relative;margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/5;scroll-snap-align:start;background:var(--navy-2);box-shadow:0 18px 40px -22px rgba(11,37,69,.5)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem .95rem .85rem;font-size:.86rem;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(11,37,69,.88))}
+
+/* benefits */
+.benefits{display:grid;gap:1.75rem;margin-top:2.75rem}
+@media (min-width:720px){.benefits{grid-template-columns:repeat(2,1fr);gap:2.25rem 3rem}}
+.benefit{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding-top:1.4rem;border-top:2px solid var(--line)}
+.benefit__icon{width:46px;height:46px;border-radius:12px;background:var(--sun-soft);color:var(--sun-deep);display:grid;place-items:center}
+.benefit__icon .icon{width:24px;height:24px}
+.benefit h3{font-size:1.2rem;font-weight:700}
+.benefit p{color:var(--ink-2);margin-top:.45rem;max-width:44ch}
+
+/* how it works */
+.how{display:grid;gap:2.5rem;margin-top:2.5rem;align-items:center}
+@media (min-width:900px){.how{grid-template-columns:1.1fr .9fr;gap:4rem}}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1.75rem}
+.stepx{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start}
+.stepx__n{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;color:var(--ocean);width:2ch;font-variant-numeric:tabular-nums}
+.stepx h3{font-size:1.2rem;font-weight:700;margin-top:.35rem}
+.stepx p{color:var(--ink-2);margin-top:.4rem;max-width:46ch}
+.how__photo{border-radius:20px;overflow:hidden;aspect-ratio:4/5;max-height:560px;background:var(--navy-2);box-shadow:0 24px 50px -26px rgba(11,37,69,.55)}
+.how__photo img{width:100%;height:100%;object-fit:cover}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:2.5rem}
+@media (min-width:900px){.gallery{grid-template-columns:repeat(4,1fr);gap:1.25rem}}
+.gallery figure{margin:0}
+.gallery .thumb{border-radius:14px;overflow:hidden;aspect-ratio:4/5;background:var(--navy-2)}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery figcaption{font-size:.86rem;color:var(--ink-2);margin-top:.55rem;line-height:1.4}
+
+/* faq */
+.faq{margin-top:2.25rem;max-width:760px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;font-family:var(--display);font-weight:700;font-size:1.1rem;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:1.6rem;line-height:1;color:var(--ocean);flex:none;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 1.25rem;color:var(--ink-2);max-width:65ch}
+
+/* final cta */
+.cta{position:relative;isolation:isolate;overflow:hidden;background:var(--navy);color:#fff;padding:4.5rem 0;text-align:center}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 80% at 50% 120%,rgba(242,135,15,.5),transparent 65%)}
+.cta h2{font-size:clamp(1.8rem,2.4vw + 1rem,2.7rem);font-weight:800;margin-inline:auto;max-width:22ch}
+.cta p{color:rgba(255,255,255,.82);margin:.9rem auto 0;max-width:48ch}
+.cta .btn{margin-top:1.75rem}
+
+/* footer */
+.footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:2.75rem 0 2.25rem;font-size:.9rem}
+.footer__top{display:grid;gap:1.75rem}
+@media (min-width:720px){.footer__top{grid-template-columns:1.2fr 1fr;align-items:start}}
+.footer .brand__name{font-size:1.15rem}
+.footer address{font-style:normal;margin-top:.9rem;display:grid;gap:.3rem;justify-items:start}
+.footer address a{color:#fff;text-decoration:none}
+.footer address a:hover{text-decoration:underline}
+.footer address [hidden]{display:none}
+.footer__tag{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sun-glow);margin-top:1rem}
+.footer__legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.25rem;font-size:.78rem;line-height:1.6;color:rgba(255,255,255,.5);display:grid;gap:.6rem}
+
+/* sticky mobile cta */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom));background:rgba(11,37,69,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transform:translateY(110%);transition:transform .25s ease}
+.sticky.is-on{transform:none}
+.sticky .btn{min-height:50px}
+@media (min-width:900px){.sticky{display:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="SolarWave Tech Enterprises home">
+      <img src="images/logo.png" alt="" width="46" height="46">
+      <span>
+        <span class="brand__name">Solar<b>Wave</b></span>
+        <span class="brand__sub">Tech Enterprises OPC</span>
+      </span>
+    </a>
+    <a class="btn btn--outline topbar__msg" data-messenger href="#" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-4.6A8 8 0 1 1 21 12z"/></svg>
+      Message us
+    </a>
+    <a class="topbar__call" data-phone-link href="#" aria-label="Call SolarWave">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO + QUALIFIER ================= -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Solar + battery systems · Philippines</p>
+        <h1>Cut your electric bill. <em>Keep the lights on during brownouts.</em></h1>
+        <p class="hero__lead">SolarWave Tech Enterprises designs and installs hybrid solar systems with lithium battery backup for homes and businesses. Answer 7 quick questions to see if your property qualifies for a free on-site assessment.</p>
+        <ul class="proof">
+          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Hybrid inverter and lithium battery systems</li>
+          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free site assessment and written proposal</li>
+          <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Trained crew, safety-first installs</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--block" href="#qualify">Check if I qualify
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="qualifier" id="qualify">
+        <form id="leadForm" novalidate autocomplete="on">
+          <div class="q-head">
+            <span class="q-kicker">Free solar assessment</span>
+            <span class="q-count" id="qCount" aria-live="polite">Question 1 of 7</span>
+          </div>
+          <div class="q-bar" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="1"><i id="qBarFill"></i></div>
+
+          <!-- 1 · bill -->
+          <fieldset class="step" data-key="bill">
+            <legend class="q-title">What's your average monthly electric bill?</legend>
+            <p class="q-help">Check your latest Meralco or electric co-op bill.</p>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="bill" value="under_3k"><span class="opt__body">Under ₱3,000</span></label>
+              <label class="opt"><input type="radio" name="bill" value="3k_6k"><span class="opt__body">₱3,000 – ₱6,000</span></label>
+              <label class="opt"><input type="radio" name="bill" value="6k_10k"><span class="opt__body">₱6,000 – ₱10,000</span></label>
+              <label class="opt"><input type="radio" name="bill" value="10k_20k"><span class="opt__body">₱10,000 – ₱20,000</span></label>
+              <label class="opt"><input type="radio" name="bill" value="over_20k"><span class="opt__body">Over ₱20,000</span></label>
+            </div>
+          </fieldset>
+
+          <!-- 2 · ownership -->
+          <fieldset class="step" data-key="ownership" hidden>
+            <legend class="q-title">Do you own the property?</legend>
+            <p class="q-help">Solar installs need the owner's go-ahead.</p>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="ownership" value="owner"><span class="opt__body">Yes, I own it</span></label>
+              <label class="opt"><input type="radio" name="ownership" value="family"><span class="opt__body">It's family-owned</span></label>
+              <label class="opt"><input type="radio" name="ownership" value="business"><span class="opt__body">It's my business</span></label>
+              <label class="opt"><input type="radio" name="ownership" value="renting"><span class="opt__body">I'm renting</span></label>
+            </div>
+          </fieldset>
+
+          <!-- 3 · property type -->
+          <fieldset class="step" data-key="property_type" hidden>
+            <legend class="q-title">What type of property is it?</legend>
+            <div class="notice" id="renterNotice" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9L2.5 17.5A2 2 0 0 0 4.2 20.5h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+              <span>Since you're renting, we'll need the property owner's approval. If you can loop them in, keep going and we'll coordinate with them.</span>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="property_type" value="residential"><span class="opt__body">House / residential</span></label>
+              <label class="opt"><input type="radio" name="property_type" value="commercial"><span class="opt__body">Commercial, office, or shop</span></label>
+              <label class="opt"><input type="radio" name="property_type" value="farm_resort_warehouse"><span class="opt__body">Farm, resort, or warehouse</span></label>
+              <label class="opt"><input type="radio" name="property_type" value="other"><span class="opt__body">Something else</span></label>
+            </div>
+          </fieldset>
+
+          <!-- 4 · priority -->
+          <fieldset class="step" data-key="priority" hidden>
+            <legend class="q-title">What matters most to you?</legend>
+            <p class="q-help">This tells us whether to recommend grid-tie or hybrid.</p>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="priority" value="savings"><span class="opt__body">Lowering my monthly bill</span></label>
+              <label class="opt"><input type="radio" name="priority" value="backup"><span class="opt__body">Power during brownouts</span></label>
+              <label class="opt"><input type="radio" name="priority" value="both"><span class="opt__body">Both savings and backup</span></label>
+              <label class="opt"><input type="radio" name="priority" value="offgrid"><span class="opt__body">Going fully off-grid</span></label>
+            </div>
+          </fieldset>
+
+          <!-- 5 · roof -->
+          <fieldset class="step" data-key="roof" hidden>
+            <legend class="q-title">What is your roof made of?</legend>
+            <p class="q-help">Not sure? Pick the closest one.</p>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="roof" value="metal"><span class="opt__body">Metal / GI sheet (yero)</span></label>
+              <label class="opt"><input type="radio" name="roof" value="concrete"><span class="opt__body">Concrete</span></label>
+              <label class="opt"><input type="radio" name="roof" value="tile"><span class="opt__body">Tiles</span></label>
+              <label class="opt"><input type="radio" name="roof" value="unsure"><span class="opt__body">Not sure</span></label>
+            </div>
+          </fieldset>
+
+          <!-- 6 · location -->
+          <fieldset class="step step--fields" data-key="location" hidden>
+            <legend class="q-title">Where is the property located?</legend>
+            <p class="q-help">We'll confirm coverage and travel for the site visit.</p>
+            <div class="field">
+              <label for="city">City / Municipality</label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Cabanatuan City">
+              <span class="err">Please enter your city or municipality.</span>
+            </div>
+            <div class="field">
+              <label for="province">Province</label>
+              <select id="province" name="province">
+                <option value="">Select a province</option>
+              </select>
+              <span class="err">Please choose your province.</span>
+            </div>
+          </fieldset>
+
+          <!-- 7 · timeline -->
+          <fieldset class="step" data-key="timeline" hidden>
+            <legend class="q-title">When are you planning to install?</legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="timeline" value="asap"><span class="opt__body">As soon as possible</span></label>
+              <label class="opt"><input type="radio" name="timeline" value="1_3_months"><span class="opt__body">Within 1 – 3 months</span></label>
+              <label class="opt"><input type="radio" name="timeline" value="3_6_months"><span class="opt__body">In 3 – 6 months</span></label>
+              <label class="opt"><input type="radio" name="timeline" value="researching"><span class="opt__body">Just researching for now</span></label>
+            </div>
+          </fieldset>
+
+          <!-- 8 · contact -->
+          <fieldset class="step step--fields step--contact" data-key="contact" hidden>
+            <legend class="q-title">Where should we send your assessment details?</legend>
+            <p class="q-help">A SolarWave specialist will reach out within 1 business day to schedule your free site visit.</p>
+            <div class="field">
+              <label for="full_name">Full name</label>
+              <input id="full_name" name="full_name" type="text" autocomplete="name" placeholder="Juan Dela Cruz">
+              <span class="err">Please enter your name.</span>
+            </div>
+            <div class="field">
+              <label for="phone">Mobile number</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0917 123 4567">
+              <span class="err">Enter a valid Philippine mobile number (e.g. 0917 123 4567).</span>
+            </div>
+            <div class="field">
+              <label for="email">Email <small>(optional)</small></label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+              <span class="err">That email doesn't look right.</span>
+            </div>
+            <div class="field">
+              <label for="contact_method">Best way to reach you</label>
+              <select id="contact_method" name="contact_method">
+                <option value="call">Phone call</option>
+                <option value="sms">Text / SMS</option>
+                <option value="messenger">Facebook Messenger</option>
+                <option value="viber">Viber</option>
+              </select>
+            </div>
+            <label class="consent" id="consentWrap">
+              <input type="checkbox" name="consent" id="consent">
+              <span>I agree that SolarWave Tech Enterprises may contact me about my solar inquiry. My details will be handled in line with the Data Privacy Act of 2012.</span>
+            </label>
+            <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div class="q-error" id="qError" role="alert"></div>
+          </fieldset>
+
+          <div class="q-nav" id="qNav">
+            <button type="button" class="btn btn--ghost" id="btnBack">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back
+            </button>
+            <button type="button" class="btn btn--primary" id="btnNext">Continue
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <p class="q-fine" id="qFine">Takes about a minute. No obligation.</p>
+        </form>
+
+        <!-- thank-you state -->
+        <div class="q-done" id="qDone" hidden>
+          <div class="q-done__check"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+          <h3 id="doneTitle">Salamat! Your request is in.</h3>
+          <p id="doneLead">A SolarWave specialist will reach out within 1 business day.</p>
+          <div class="notice" id="doneRenter" hidden>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9L2.5 17.5A2 2 0 0 0 4.2 20.5h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+            <span>Since you're renting, please loop in the property owner. We'll need their approval before any install.</span>
+          </div>
+          <div class="upload" id="billUpload">
+            <h4>Speed up your quote: add a photo of your bill</h4>
+            <p class="upload__hint">Optional. A clear photo of your latest electric bill lets us size your system before the visit.</p>
+            <div class="upload__row">
+              <button type="button" class="btn btn--primary" id="billBtn">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+                Take a photo or upload
+              </button>
+              <input type="file" id="billFile" accept="image/*,application/pdf">
+              <img class="upload__preview" id="billPreview" alt="">
+            </div>
+            <p class="upload__status" id="billStatus" aria-live="polite"></p>
+          </div>
+          <dl class="summary">
+            <div><dt>Your bill range</dt><dd id="sumBill">—</dd></div>
+            <div><dt>Likely system fit</dt><dd id="sumSystem">—</dd></div>
+            <div><dt>Typical system size</dt><dd id="sumSize">—</dd></div>
+            <p>Estimates only. Final size and price come after the site visit.</p>
+          </dl>
+          <ol class="next">
+            <li>We call or message you to confirm details.</li>
+            <li>A free site visit to check your roof, wiring and daily load.</li>
+            <li>You get a clear proposal with price and savings. Install only when you're ready.</li>
+          </ol>
+          <div class="q-done__actions">
+            <a class="btn btn--ocean" data-messenger href="#" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-4.6A8 8 0 1 1 21 12z"/></svg>Message us
+            </a>
+            <a class="btn btn--soft" data-phone-link href="#" aria-label="Call us">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-phone></span>
+            </a>
+          </div>
+        </div>
+        <noscript><p class="q-help" style="margin-top:1rem">This form needs JavaScript. You can also message us on Facebook and we'll take it from there.</p></noscript>
+      </div>
+    </div>
+    <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,42 C240,86 420,0 720,40 C1020,80 1200,6 1440,44 L1440,80 L0,80 Z" fill="#F3F6FA"/>
+    </svg>
+  </section>
+
+  <!-- ================= PHOTO BAND ================= -->
+  <section class="band" aria-label="Recent installations">
+    <div class="wrap">
+      <div class="band__row">
+        <figure class="photo"><img src="images/hero-roof.jpg" alt="Rows of solar panels mounted on a white metal roof, trees behind" loading="lazy"><figcaption>Rooftop array on a metal roof</figcaption></figure>
+        <figure class="photo"><img src="images/install-crew.jpg" alt="Two SolarWave installers carrying a solar panel across a green GI-sheet roof" loading="lazy"><figcaption>Panel mounting on a GI-sheet roof</figcaption></figure>
+        <figure class="photo"><img src="images/battery-wall.jpg" alt="SolarWave technician beside a wall-mounted hybrid inverter and two lithium battery units" loading="lazy"><figcaption>Hybrid inverter with lithium battery bank</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BENEFITS ================= -->
+  <section class="section section--white">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Why go solar with SolarWave</p>
+        <h2>Daytime power you own, and backup for when the grid lets you down.</h2>
+        <p class="section__lead">Every system is sized to your actual bill and daily load, then installed by our own crew.</p>
+      </div>
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+          <div>
+            <h3>Lower bills from the first month</h3>
+            <p>Your panels cover daytime use so you buy less from Meralco or your electric co-op. With net metering, extra power goes back to the grid as credit.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <div>
+            <h3>Lights on during brownouts</h3>
+            <p>Hybrid systems store daytime energy in lithium batteries, so lights, fans, Wi-Fi and the fridge keep running when the grid goes down.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
+          <div>
+            <h3>Built for Philippine roofs</h3>
+            <p>We mount on GI sheet, concrete and tile, with wiring and fixings done for our rainy season and strong winds.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M21 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          <div>
+            <h3>One crew from survey to switch-on</h3>
+            <p>Site assessment, system design, installation and after-sales support all come from the same SolarWave team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">How it works</p>
+        <h2>From a one-minute form to a system on your roof.</h2>
+      </div>
+      <div class="how">
+        <ol class="steps">
+          <li class="stepx">
+            <span class="stepx__n">1</span>
+            <div>
+              <h3>Answer 7 quick questions</h3>
+              <p>Tell us about your bill, property and what you want from solar. It takes about a minute.</p>
+            </div>
+          </li>
+          <li class="stepx">
+            <span class="stepx__n">2</span>
+            <div>
+              <h3>Get a free site assessment</h3>
+              <p>A SolarWave specialist confirms your details, then visits to check your roof, wiring and daily load.</p>
+            </div>
+          </li>
+          <li class="stepx">
+            <span class="stepx__n">3</span>
+            <div>
+              <h3>Review a clear proposal</h3>
+              <p>You receive a system design, the price and estimated savings. Our crew installs only when you say go.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="how__photo">
+          <img src="images/installer-system.jpg" alt="SolarWave installer in a hard hat presenting a finished wall-mounted inverter and battery installation" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="section section--white">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Our work</p>
+        <h2>Real installs by the SolarWave crew.</h2>
+      </div>
+      <div class="gallery">
+        <figure>
+          <div class="thumb"><img src="images/team-install.jpg" alt="Two SolarWave crew members giving a thumbs up beside a completed inverter and battery install" loading="lazy"></div>
+          <figcaption>Crew after switch-on of a hybrid system</figcaption>
+        </figure>
+        <figure>
+          <div class="thumb"><img src="images/inverter-closeup.jpg" alt="Close-up of a wall-mounted hybrid inverter showing live system status" loading="lazy"></div>
+          <figcaption>Hybrid inverter with live system display</figcaption>
+        </figure>
+        <figure>
+          <div class="thumb"><img src="images/crew-briefing.jpg" alt="SolarWave crew in hard hats gathered for a briefing at a job site" loading="lazy"></div>
+          <figcaption>Site briefing before a rooftop install</figcaption>
+        </figure>
+        <figure>
+          <div class="thumb"><img src="images/team-handover.jpg" alt="Three SolarWave team members in hard hats beside a newly installed inverter and battery" loading="lazy"></div>
+          <figcaption>Team at a completed residential install</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Common questions</p>
+        <h2>Before you fill in the form.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Is the assessment really free?</summary>
+          <p>Yes. The site visit and the written proposal are free, with no obligation to proceed.</p>
+        </details>
+        <details>
+          <summary>Will my solar system work during a brownout?</summary>
+          <p>A grid-tie system shuts off during an outage for safety. A hybrid system with batteries keeps your essential loads running. Tell us what matters most in the form and we'll recommend the right setup.</p>
+        </details>
+        <details>
+          <summary>How much does a system cost?</summary>
+          <p>It depends on your bill, your roof and whether you want battery backup. The free assessment gives you an exact price for your property instead of a guess.</p>
+        </details>
+        <details>
+          <summary>What is net metering?</summary>
+          <p>Net metering lets you send excess daytime power back to the grid in exchange for credit on your bill. We'll walk you through the application with your utility.</p>
+        </details>
+        <details>
+          <summary>How long does installation take?</summary>
+          <p>Most residential installs take one to three days once the design is approved and materials are on site.</p>
+        </details>
+        <details>
+          <summary>Which areas do you serve?</summary>
+          <p>Enter your city and province in the form and we'll confirm coverage when we call you.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>Find out if your roof qualifies.</h2>
+      <p>Seven questions, about a minute, and a real specialist on the other end.</p>
+      <a class="btn btn--primary" href="#qualify">Start my free assessment
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="#top">
+          <img src="images/logo.png" alt="SolarWave Tech Enterprises logo" width="46" height="46">
+          <span>
+            <span class="brand__name">Solar<b>Wave</b></span>
+            <span class="brand__sub">Tech Enterprises OPC</span>
+          </span>
+        </a>
+        <p class="footer__tag">Powering a better future</p>
+      </div>
+      <address>
+        <a data-phone-link href="#">Call or text <span data-phone></span></a>
+        <a data-messenger href="#" target="_blank" rel="noopener">Message us on Facebook</a>
+        <a data-email-link href="#" hidden><span data-email></span></a>
+        <span data-address hidden></span>
+      </address>
+    </div>
+    <div class="footer__legal">
+      <p>© <span id="year"></span> SolarWave Tech Enterprises OPC. We collect your details only to respond to your solar inquiry, in line with the Data Privacy Act of 2012 (RA 10173). We never sell your information.</p>
+      <p>This site is not part of the Facebook website or Facebook Inc. Additionally, this site is not endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky" id="stickyCta">
+  <a class="btn btn--primary btn--block" href="#qualify">Check if I qualify
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var CONFIG = window.SOLARWAVE_CONFIG || {};
+
+  /* ---------- Meta Pixel (only when an ID is set) ---------- */
+  if (CONFIG.fbPixelId) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', CONFIG.fbPixelId);
+    fbq('track', 'PageView');
+  }
+  function track(name, data, custom) {
+    if (typeof window.fbq !== 'function') return;
+    try { window.fbq(custom ? 'trackCustom' : 'track', name, data || {}); } catch (e) {}
+  }
+
+  /* ---------- contact details from CONFIG ---------- */
+  var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  $$('[data-phone]').forEach(function (el) { el.textContent = CONFIG.phoneDisplay || CONFIG.phone || ''; });
+  $$('[data-phone-link]').forEach(function (a) { a.href = 'tel:' + (CONFIG.phone || '').replace(/\s+/g, ''); });
+  $$('[data-messenger]').forEach(function (a) { a.href = CONFIG.messenger || '#'; });
+  if (CONFIG.email) {
+    $$('[data-email]').forEach(function (el) { el.textContent = CONFIG.email; });
+    $$('[data-email-link]').forEach(function (a) { a.href = 'mailto:' + CONFIG.email; a.hidden = false; });
+  }
+  if (CONFIG.address) { $$('[data-address]').forEach(function (el) { el.textContent = CONFIG.address; el.hidden = false; }); }
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- provinces ---------- */
+  var PROVINCES = ['Metro Manila (NCR)','Abra','Agusan del Norte','Agusan del Sur','Aklan','Albay','Antique','Apayao','Aurora','Basilan','Bataan','Batanes','Batangas','Benguet','Biliran','Bohol','Bukidnon','Bulacan','Cagayan','Camarines Norte','Camarines Sur','Camiguin','Capiz','Catanduanes','Cavite','Cebu','Cotabato','Davao de Oro','Davao del Norte','Davao del Sur','Davao Occidental','Davao Oriental','Dinagat Islands','Eastern Samar','Guimaras','Ifugao','Ilocos Norte','Ilocos Sur','Iloilo','Isabela','Kalinga','La Union','Laguna','Lanao del Norte','Lanao del Sur','Leyte','Maguindanao del Norte','Maguindanao del Sur','Marinduque','Masbate','Misamis Occidental','Misamis Oriental','Mountain Province','Negros Occidental','Negros Oriental','Northern Samar','Nueva Ecija','Nueva Vizcaya','Occidental Mindoro','Oriental Mindoro','Palawan','Pampanga','Pangasinan','Quezon','Quirino','Rizal','Romblon','Samar','Sarangani','Siquijor','Sorsogon','South Cotabato','Southern Leyte','Sultan Kudarat','Sulu','Surigao del Norte','Surigao del Sur','Tarlac','Tawi-Tawi','Zambales','Zamboanga del Norte','Zamboanga del Sur','Zamboanga Sibugay'];
+  var provinceSel = document.getElementById('province');
+  PROVINCES.forEach(function (p) { var o = document.createElement('option'); o.value = p; o.textContent = p; provinceSel.appendChild(o); });
+
+  /* ---------- labels used in payload + thank-you ---------- */
+  var LABELS = {
+    bill: { under_3k: 'Under ₱3,000', '3k_6k': '₱3,000 – ₱6,000', '6k_10k': '₱6,000 – ₱10,000', '10k_20k': '₱10,000 – ₱20,000', over_20k: 'Over ₱20,000' },
+    ownership: { owner: 'Owner', family: 'Family-owned', business: 'Business owner', renting: 'Renting' },
+    property_type: { residential: 'Residential', commercial: 'Commercial / office / shop', farm_resort_warehouse: 'Farm / resort / warehouse', other: 'Other' },
+    priority: { savings: 'Lower monthly bill', backup: 'Power during brownouts', both: 'Savings and backup', offgrid: 'Fully off-grid' },
+    roof: { metal: 'Metal / GI sheet', concrete: 'Concrete', tile: 'Tiles', unsure: 'Not sure' },
+    timeline: { asap: 'As soon as possible', '1_3_months': 'Within 1–3 months', '3_6_months': 'In 3–6 months', researching: 'Just researching' },
+    contact_method: { call: 'Phone call', sms: 'Text / SMS', messenger: 'Facebook Messenger', viber: 'Viber' }
+  };
+  var TYPICAL_SIZE = { under_3k: '2 – 3 kWp', '3k_6k': '3 – 5 kWp', '6k_10k': '5 – 8 kWp', '10k_20k': '8 – 15 kWp', over_20k: '15 kWp and up' };
+  var SYSTEM_FIT = { savings: 'Grid-tie (no battery)', backup: 'Hybrid with battery backup', both: 'Hybrid with battery backup', offgrid: 'Off-grid with battery bank' };
+
+  /* ---------- lead scoring ---------- */
+  function scoreLead(a) {
+    var s = 0, flags = [];
+    s += { under_3k: 0, '3k_6k': 1, '6k_10k': 2, '10k_20k': 3, over_20k: 3 }[a.bill] || 0;
+    s += { owner: 2, family: 2, business: 2, renting: 0 }[a.ownership] || 0;
+    s += { asap: 3, '1_3_months': 2, '3_6_months': 1, researching: 0 }[a.timeline] || 0;
+    if (a.ownership === 'renting') flags.push('needs_owner_approval');
+    if (a.bill === 'under_3k') flags.push('low_bill');
+    if (a.timeline === 'researching') flags.push('long_timeline');
+    var temp = s >= 6 ? 'hot' : s >= 3 ? 'warm' : 'cold';
+    var qualified = a.ownership !== 'renting' && a.bill !== 'under_3k';
+    return { score: s, lead_temperature: temp, qualified: qualified, flags: flags,
+             recommended_system: SYSTEM_FIT[a.priority] || '', typical_system_size: TYPICAL_SIZE[a.bill] || '' };
+  }
+
+  /* ---------- qualifier flow ---------- */
+  var form = document.getElementById('leadForm');
+  var steps = $$('.step', form);
+  var count = document.getElementById('qCount');
+  var barFill = document.getElementById('qBarFill');
+  var bar = form.querySelector('.q-bar');
+  var nav = document.getElementById('qNav');
+  var btnBack = document.getElementById('btnBack');
+  var btnNext = document.getElementById('btnNext');
+  var fine = document.getElementById('qFine');
+  var qError = document.getElementById('qError');
+  var card = document.getElementById('qualify');
+  var ARROW = ' <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var answers = {};
+  var idx = 0, started = false, advancing = false, done = false;
+  var QUESTIONS = steps.length - 1; // the last step collects contact details
+
+  function show(i) {
+    idx = i;
+    steps.forEach(function (s, n) { s.hidden = n !== i; });
+    var step = steps[i];
+    var isContact = step.dataset.key === 'contact';
+    var isFields = step.classList.contains('step--fields');
+    count.textContent = isContact ? 'Last step' : 'Question ' + (i + 1) + ' of ' + QUESTIONS;
+    barFill.style.width = ((i + 1) / steps.length * 100) + '%';
+    bar.setAttribute('aria-valuenow', i + 1);
+    nav.classList.toggle('has-back', i > 0);
+    nav.hidden = !isFields && i === 0;
+    btnNext.hidden = !isFields;
+    btnNext.disabled = false;
+    btnNext.innerHTML = (isContact ? 'Get my free assessment' : 'Continue') + ARROW;
+    fine.textContent = isContact ? 'No obligation. No spam. We never sell your information.' : 'Takes about a minute. No obligation.';
+    document.getElementById('renterNotice').hidden = !(step.dataset.key === 'property_type' && answers.ownership === 'renting');
+    qError.classList.remove('is-on');
+    if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: 'start' });
+    if (isFields && window.innerWidth >= 900) { var first = step.querySelector('input,select'); if (first) first.focus(); }
+  }
+
+  form.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t.type !== 'radio' || advancing) return;
+    answers[t.name] = t.value;
+    if (!started) { started = true; track('QualifierStart', {}, true); }
+    advancing = true;
+    setTimeout(function () { advancing = false; if (idx < steps.length - 1) show(idx + 1); }, 240);
+  });
+
+  btnBack.addEventListener('click', function () { if (idx > 0) show(idx - 1); });
+
+  function setInvalid(el, bad) {
+    var f = el.closest('.field') || el.closest('.consent');
+    if (f) f.classList.toggle('is-invalid', !!bad);
+    return !bad;
+  }
+  function normalizePhone(v) {
+    var d = String(v || '').replace(/[^\d+]/g, '');
+    var m = d.match(/^(?:\+?63|0)(9\d{9})$/);
+    return m ? '+63' + m[1] : null;
+  }
+  function validateLocation() {
+    var city = document.getElementById('city'), prov = document.getElementById('province');
+    var ok = setInvalid(city, city.value.trim().length < 2);
+    ok = setInvalid(prov, !prov.value) && ok;
+    if (ok) { answers.city = city.value.trim(); answers.province = prov.value; }
+    return ok;
+  }
+  function validateContact() {
+    var name = document.getElementById('full_name'), phone = document.getElementById('phone'),
+        email = document.getElementById('email'), consent = document.getElementById('consent');
+    var ok = setInvalid(name, name.value.trim().length < 2);
+    var normalized = normalizePhone(phone.value);
+    ok = setInvalid(phone, !normalized) && ok;
+    var em = email.value.trim();
+    ok = setInvalid(email, em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) && ok;
+    ok = setInvalid(consent, !consent.checked) && ok;
+    if (ok) {
+      answers.full_name = name.value.trim();
+      answers.phone = normalized;
+      answers.phone_entered = phone.value.trim();
+      answers.email = em;
+      answers.contact_method = document.getElementById('contact_method').value;
+    }
+    return ok;
+  }
+
+  btnNext.addEventListener('click', function () {
+    var key = steps[idx].dataset.key;
+    if (key === 'location') { if (validateLocation()) show(idx + 1); return; }
+    if (key === 'contact') { if (validateContact()) submit(); }
+  });
+  form.addEventListener('submit', function (e) { e.preventDefault(); btnNext.click(); });
+  form.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'radio') { e.preventDefault(); btnNext.click(); }
+  });
+
+  /* ---------- build + send the lead ---------- */
+  function urlParams() {
+    var p = new URLSearchParams(location.search), out = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','ad_id','adset_id','campaign_id'].forEach(function (k) { if (p.get(k)) out[k] = p.get(k); });
+    return out;
+  }
+  function buildLead() {
+    var scored = scoreLead(answers);
+    var lead = {
+      submitted_at: new Date().toISOString(),
+      lead_id: 'SW-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).slice(2, 6).toUpperCase(),
+      source: 'facebook-landing-page',
+      full_name: answers.full_name, phone: answers.phone, email: answers.email || '',
+      contact_method: answers.contact_method, contact_method_label: LABELS.contact_method[answers.contact_method],
+      city: answers.city, province: answers.province,
+      bill: answers.bill, bill_label: LABELS.bill[answers.bill],
+      ownership: answers.ownership, ownership_label: LABELS.ownership[answers.ownership],
+      property_type: answers.property_type, property_type_label: LABELS.property_type[answers.property_type],
+      priority: answers.priority, priority_label: LABELS.priority[answers.priority],
+      roof: answers.roof, roof_label: LABELS.roof[answers.roof],
+      timeline: answers.timeline, timeline_label: LABELS.timeline[answers.timeline],
+      page_url: location.href, referrer: document.referrer || '', user_agent: navigator.userAgent
+    };
+    Object.keys(scored).forEach(function (k) { lead[k] = scored[k]; });
+    lead.flags = scored.flags.join(',');
+    var utm = urlParams(); Object.keys(utm).forEach(function (k) { lead[k] = utm[k]; });
+    return lead;
+  }
+  function send(lead) {
+    if (!CONFIG.endpoint) {
+      console.info('[SolarWave] Test mode: no endpoint configured. Lead that would be sent:', lead);
+      return new Promise(function (r) { setTimeout(function () { r({ ok: true, test: true }); }, 600); });
+    }
+    var fmt = CONFIG.endpointFormat || 'json', headers = {}, body;
+    if (fmt === 'form') { headers['Content-Type'] = 'application/x-www-form-urlencoded'; body = new URLSearchParams(lead).toString(); }
+    else if (fmt === 'text') { headers['Content-Type'] = 'text/plain;charset=UTF-8'; body = JSON.stringify(lead); }
+    else { headers['Content-Type'] = 'application/json'; body = JSON.stringify(lead); }
+    return fetch(CONFIG.endpoint, { method: 'POST', headers: headers, body: body, redirect: 'follow' })
+      .then(function (res) {
+        if (res.type === 'opaque' || res.type === 'opaqueredirect') return { ok: true };
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text().then(function (t) {
+          var j = null; try { j = JSON.parse(t); } catch (e) {}
+          if (j && j.ok === false) throw new Error(j.error || 'Rejected by server');
+          return { ok: true };
+        });
+      });
+  }
+
+  function submit() {
+    if (form.elements.website && form.elements.website.value) { showDone(); return; } // honeypot: bots get a thank-you, nothing is sent
+    var lead = buildLead();
+    btnNext.disabled = true;
+    btnNext.textContent = 'Sending…';
+    qError.classList.remove('is-on');
+    send(lead).then(function () {
+      track('Lead', { content_name: 'Solar assessment', content_category: lead.lead_temperature, currency: 'PHP' });
+      if (CONFIG.thankYouRedirect) { location.href = CONFIG.thankYouRedirect; return; }
+      showDone(lead);
+    }).catch(function (err) {
+      console.error('[SolarWave] Lead submission failed:', err);
+      show(idx);
+      qError.innerHTML = 'We couldn\'t send your details just now. Please try again, or <a href="' + (CONFIG.messenger || '#') + '" target="_blank" rel="noopener">message us on Facebook</a>.';
+      qError.classList.add('is-on');
+    });
+  }
+
+  var currentLead = null;
+  function showDone(lead) {
+    done = true;
+    lead = lead || buildLead();
+    currentLead = lead;
+    var first = (lead.full_name || '').split(/\s+/)[0];
+    document.getElementById('doneTitle').textContent = first ? 'Salamat, ' + first + '! Your request is in.' : 'Salamat! Your request is in.';
+    document.getElementById('sumBill').textContent = lead.bill_label || '—';
+    document.getElementById('sumSystem').textContent = lead.recommended_system || '—';
+    document.getElementById('sumSize').textContent = lead.typical_system_size || '—';
+    document.getElementById('doneRenter').hidden = lead.ownership !== 'renting';
+    form.hidden = true;
+    document.getElementById('qDone').hidden = false;
+    document.getElementById('stickyCta').classList.remove('is-on');
+    if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: 'start' });
+    try { history.replaceState(null, '', location.pathname + location.search + '#thank-you'); } catch (e) {}
+  }
+
+  /* ---------- optional bill photo (thank-you screen) ---------- */
+  var billInput = document.getElementById('billFile'), billBtn = document.getElementById('billBtn'),
+      billStatus = document.getElementById('billStatus'), billPreview = document.getElementById('billPreview');
+  var MAX_FILE_BYTES = 6 * 1024 * 1024;
+  billBtn.addEventListener('click', function () { billInput.click(); });
+  billInput.addEventListener('change', function () { var f = billInput.files && billInput.files[0]; if (f) uploadBill(f); });
+
+  function setBillStatus(msg, cls) { billStatus.textContent = msg; billStatus.className = 'upload__status is-on' + (cls ? ' ' + cls : ''); }
+  function readAsDataURL(file) {
+    return new Promise(function (res, rej) { var r = new FileReader(); r.onload = function () { res(r.result); }; r.onerror = function () { rej(r.error); }; r.readAsDataURL(file); });
+  }
+  function shrinkImage(file, maxPx, quality) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        var w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, maxPx / Math.max(w, h));
+        var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        resolve(c.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('decode')); };
+      img.src = url;
+    });
+  }
+  function uploadBill(file) {
+    var isImage = /^image\//.test(file.type), isPdf = file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
+    if (!isImage && !isPdf) { setBillStatus('Please choose a photo or a PDF of your bill.', 'is-err'); return; }
+    if (!currentLead) { setBillStatus('Please submit the form first.', 'is-err'); return; }
+    billBtn.disabled = true;
+    setBillStatus('Uploading your bill…');
+    var prep = isImage ? shrinkImage(file, 1600, 0.82).catch(function () { return readAsDataURL(file); }) : readAsDataURL(file);
+    prep.then(function (dataUrl) {
+      if (dataUrl.length > MAX_FILE_BYTES * 1.37) throw new Error('too_big');
+      if (isImage) { billPreview.src = dataUrl; billPreview.classList.add('is-on'); }
+      var comma = dataUrl.indexOf(',');
+      return send({
+        type: 'bill_photo', lead_id: currentLead.lead_id, full_name: currentLead.full_name, phone: currentLead.phone,
+        filename: file.name, mime: dataUrl.slice(5, comma).split(';')[0], data: dataUrl.slice(comma + 1)
+      });
+    }).then(function () {
+      track('BillPhotoUploaded', {}, true);
+      billBtn.hidden = true;
+      setBillStatus('Bill received. Salamat!', 'is-ok');
+    }).catch(function (err) {
+      console.error('[SolarWave] Bill upload failed:', err);
+      billBtn.disabled = false;
+      billInput.value = '';
+      setBillStatus(err && err.message === 'too_big'
+        ? 'That file is too large. Please choose a photo under 6 MB.'
+        : 'Upload failed. Please try again, or send the photo to us on Messenger.', 'is-err');
+    });
+  }
+
+  /* ---------- sticky mobile CTA ---------- */
+  var sticky = document.getElementById('stickyCta');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('is-on', !done && !entries[0].isIntersecting);
+    }, { threshold: 0.12 }).observe(card);
+  }
+
+  show(0);
+})();
+</script>
+</body>
+</html>
