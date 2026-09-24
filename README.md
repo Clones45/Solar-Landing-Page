@@ -77,7 +77,7 @@ These do not handle the bill photo upload unless the receiving service accepts a
 
 ## 3. Hosting
 
-Upload `index.html` and the `images/` folder to any static host (Netlify, Vercel,
+Upload `index.html`, `favicon.ico` and the `images/` folder to any static host (Netlify, Vercel,
 Cloudflare Pages, GitHub Pages, or your existing web host). No server code is needed.
 
 Put your Facebook ad's destination URL with UTM tags, for example:
